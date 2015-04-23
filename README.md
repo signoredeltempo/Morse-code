@@ -6,11 +6,14 @@ Il linguaggio utilizzato è il C#, con piattaforma .NET.
 # Architettura #
 
 Gli elementi utilizzati dal c.m. sono, fondamentalmente, il punto (".") ed il trattino ("-"). Il c.m. prevede che il trattino abbia una durata tripla rispetto a quella del punto semplice, considerato come unità temporale minima; è però lasciato alla comunicazione stabilire quanto questo valga nella stessa.
+Non c'è distinzione tra client e server: entrambi i comunicanti possono inviare/ricevere, ma non parallelamente poiché la connessione è trattata come half-duplex.
+
 
 ## Protocollo ##
 La comunicazione è basata sul modello TCP/IP, utilizzando socket (classe System.Net.Sockets) asincroni affinché il processo principale non venga bloccato da una delle primitive di I/O.  
 Ottenuto l'input (vedi §Input), che è stato già validato affinché contella solamente combinazioni valide nell'alfabeto Morse, si procede all'invio al ricevente.  
 In un modello reale, il destinatario riceve solo i suoni che sono stati digitati dal mittente; il programma, al fine di semplificare la conversione, riproduce i suoni relativi e visualizza anche la loro rappresentazione in lettere dall'alfabeto, convertendoli.
+
 
 
 # Input # 
